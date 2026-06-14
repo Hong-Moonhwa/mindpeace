@@ -1,0 +1,215 @@
+:root {
+  --bg:              #FAF7F2;
+  --surface:         #F0EAE0;
+  --primary:         #8B7355;
+  --accent:          #6B8F71;
+  --text:            #3D3228;
+  --muted:           #A89880;
+  --border:          #DDD5C5;
+  --chip-bg:         #F0EAE0;
+  --chip-text:       #3D3228;
+  --chip-active-bg:  #8B7355;
+  --chip-active-txt: #FAF7F2;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg:              #1C1712;
+    --surface:         #2A2318;
+    --primary:         #C9A97A;
+    --accent:          #8FB895;
+    --text:            #F0E8D8;
+    --muted:           #9C8870;
+    --border:          #3D3228;
+    --chip-bg:         #2A2318;
+    --chip-text:       #F0E8D8;
+    --chip-active-bg:  #C9A97A;
+    --chip-active-txt: #1C1712;
+  }
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body {
+  height: 100%;
+  overflow: hidden;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: -apple-system, BlinkMacSystemFont, 'Noto Sans KR', 'Apple SD Gothic Neo', sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── Layout ─────────────────────────────── */
+.app {
+  display: flex;
+  flex-direction: column;
+  height: 100dvh;           /* dynamic viewport height for mobile */
+  height: 100vh;
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+/* ── Header ─────────────────────────────── */
+.header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 20px 24px 16px;
+  border-bottom: 1px solid var(--border);
+  flex-shrink: 0;
+}
+
+.header-lotus { font-size: 22px; }
+
+.header-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--primary);
+  letter-spacing: -0.2px;
+}
+
+.header-sub {
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--muted);
+  letter-spacing: 0;
+}
+
+/* ── Emotion Bar ─────────────────────────── */
+.emotion-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 14px 24px;
+  border-bottom: 1px solid var(--border);
+  flex-shrink: 0;
+}
+
+.chip {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 7px 14px;
+  border-radius: 20px;
+  border: 1.5px solid var(--border);
+  background: var(--chip-bg);
+  color: var(--chip-text);
+  font-family: inherit;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background 0.18s, color 0.18s, border-color 0.18s, transform 0.1s;
+  white-space: nowrap;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.chip:active { transform: scale(0.93); }
+
+.chip.active {
+  background: var(--chip-active-bg);
+  color: var(--chip-active-txt);
+  border-color: var(--chip-active-bg);
+  font-weight: 600;
+}
+
+/* ── Quote Area ─────────────────────────── */
+.quote-area {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 36px 28px;
+  overflow: hidden;
+}
+
+.quote-card {
+  width: 100%;
+  text-align: center;
+  transition: opacity 0.22s ease;
+}
+
+.quote-card.fade-out { opacity: 0; }
+
+.quote-text {
+  font-family: 'Nanum Myeongjo', 'Apple Myungjo', Georgia, serif;
+  font-size: 21px;
+  line-height: 1.95;
+  color: var(--text);
+  font-style: normal;
+  word-break: keep-all;
+  word-wrap: break-word;
+  margin-bottom: 28px;
+}
+
+.quote-source {
+  display: block;
+  font-size: 13px;
+  color: var(--muted);
+  font-style: normal;
+  letter-spacing: 1px;
+}
+
+/* ── Footer ─────────────────────────────── */
+.footer {
+  padding: 20px 24px 36px;
+  display: flex;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.refresh-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 30px;
+  background: var(--surface);
+  border: 1.5px solid var(--border);
+  border-radius: 50px;
+  color: var(--primary);
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.18s, transform 0.1s;
+  letter-spacing: -0.2px;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.refresh-btn:active { transform: scale(0.96); }
+
+.refresh-icon {
+  font-size: 20px;
+  display: inline-block;
+  line-height: 1;
+}
+
+.refresh-btn.spinning .refresh-icon {
+  animation: spin 0.45s ease;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+/* ── Pull-to-refresh hint ───────────────── */
+.ptr-hint {
+  position: fixed;
+  top: -40px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--primary);
+  color: #fff;
+  font-size: 12px;
+  padding: 6px 16px;
+  border-radius: 0 0 12px 12px;
+  transition: top 0.25s ease;
+  pointer-events: none;
+  white-space: nowrap;
+  z-index: 99;
+}
+
+.ptr-hint.show { top: 0; }

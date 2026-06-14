@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="theme-color" content="#8B7355">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="description" content="매일 부처님의 가르침으로 마음의 평안을 찾으세요">
+  <title>오늘의 부처님 말씀</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="manifest" href="manifest.json">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="app">
+
+    <header class="header">
+      <span class="header-lotus" aria-hidden="true">🪷</span>
+      <h1 class="header-title">오늘의 부처님 말씀 <span class="header-sub">(불자들의 커피숍)</span></h1>
+    </header>
+
+    <nav class="emotion-bar" id="emotionBar" aria-label="감정 선택"></nav>
+
+    <main class="quote-area">
+      <div class="quote-card" id="quoteCard">
+        <blockquote class="quote-text" id="quoteText">말씀을 불러오는 중…</blockquote>
+        <cite class="quote-source" id="quoteSource"></cite>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <button class="refresh-btn" id="refreshBtn" aria-label="다른 말씀 보기">
+        <span class="refresh-icon" id="refreshIcon" aria-hidden="true">↻</span>
+        다른 말씀 보기
+      </button>
+    </footer>
+
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,11 @@
+{
+  "name": "오늘의 부처님 말씀",
+  "short_name": "부처님 말씀",
+  "description": "매일 부처님의 가르침으로 마음의 평안을 찾으세요",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#FAF7F2",
+  "theme_color": "#8B7355",
+  "lang": "ko"
+}
